@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .claude
 .env
+
+# Claude Code project instructions
+CLAUDE.md
