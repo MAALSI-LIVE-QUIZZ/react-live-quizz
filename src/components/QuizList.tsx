@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import type { Quiz } from "@/types/quiz";
 import { QuizCard } from "./QuizCard";
 
 export const QuizList = () => {
+  const navigate = useNavigate();
   const [quizzes, setQuizzes] = useState<Quiz[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -29,8 +31,7 @@ export const QuizList = () => {
   }, []);
 
   const handleQuizClick = (quizId: number) => {
-    console.log("Quiz sélectionné:", quizId);
-    // TODO: Navigation vers le quiz
+    navigate(`/quiz/${quizId}`);
   };
 
   if (loading) {
