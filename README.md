@@ -1,11 +1,98 @@
-# React + TypeScript + Vite
+# React Live Quizz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application de quiz en temps réel construite avec React, TypeScript et Vite.
 
-Currently, two official plugins are available:
+## Stack Technique
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** avec TypeScript
+- **Vite 7** pour le build et le développement
+- **Tailwind CSS v4** pour le styling
+- **shadcn/ui** pour les composants UI
+- **React Router** pour la navigation
+
+## Développement
+
+### Prérequis
+
+- Node.js 22+
+- npm
+
+### Installation
+
+```bash
+npm install
+```
+
+### Variables d'environnement
+
+Créez un fichier `.env` à la racine du projet :
+
+```bash
+VITE_API_URL=http://localhost:3000
+```
+
+### Commandes de développement
+
+```bash
+# Démarrer le serveur de développement
+npm run dev
+
+# Lancer le linter
+npm run lint
+
+# Builder l'application
+npm run build
+
+# Prévisualiser le build de production
+npm run preview
+```
+
+## Déploiement avec Docker
+
+L'application peut être conteneurisée avec Docker pour un déploiement facile.
+
+### Build de l'image Docker
+
+#### Avec l'URL d'API par défaut
+
+```bash
+docker build -t react-live-quizz:latest .
+```
+
+#### Avec une URL d'API personnalisée
+
+```bash
+docker build --build-arg VITE_API_URL=https://api.example.com -t react-live-quizz:prod .
+```
+
+### Lancer le conteneur
+
+```bash
+# Exposer sur le port 8080
+docker run -p 8080:80 react-live-quizz:latest
+```
+
+L'application sera accessible sur `http://localhost:8080`
+
+### Options de build Docker
+
+- `VITE_API_URL` : URL de l'API backend (défaut : `http://localhost:3000`)
+
+**Note** : La variable d'environnement est embarquée dans le bundle au moment du build. Pour changer l'URL de l'API, vous devez reconstruire l'image Docker.
+
+## Architecture
+
+```
+src/
+├── components/
+│   └── ui/          # Composants shadcn/ui
+├── lib/
+│   └── utils.ts     # Fonctions utilitaires
+├── pages/           # Pages de l'application
+├── App.tsx          # Composant principal avec routage
+├── main.tsx         # Point d'entrée
+└── index.css        # Styles globaux et Tailwind
+```
 
 ## React Compiler
 
