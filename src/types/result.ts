@@ -28,3 +28,9 @@ export interface QuizSession {
   hasConsent: boolean;
   startedAt: Date;
 }
+
+export interface UserAnswer {
+  questionId: number;
+  answerId: number;
+  isCorrect: boolean;
+}
