@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import type { Quiz } from "@/types/quiz";
 import { QuizCard } from "./QuizCard";
+import { fetchAllQuizzes } from "@/services/quizApi";
 
 export const QuizList = () => {
   const navigate = useNavigate();
@@ -12,13 +13,7 @@ export const QuizList = () => {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/quizz`);
-
-        if (!response.ok) {
-          throw new Error("Erreur lors du chargement des quiz");
-        }
-
-        const data = await response.json();
+        const data = await fetchAllQuizzes();
         setQuizzes(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Une erreur est survenue");
