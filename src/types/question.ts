@@ -7,7 +7,8 @@ export interface Answer {
 
 export interface Question {
   id: number;
-  text: string;
+  title: string;
   quizzId: number;
   answers: Answer[];
+  explanation?: string;
 }
