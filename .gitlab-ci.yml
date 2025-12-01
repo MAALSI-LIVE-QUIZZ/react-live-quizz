@@ -1,0 +1,9 @@
+stages:
+  - test
+
+unit_test:
+  stage: test
+  image: node:20
+  script:
+    - npm i
+    - npm run test
