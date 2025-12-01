@@ -48,7 +48,10 @@ export const useQuizResults = (
     setSubmitError(null);
 
     try {
-      const sessionDuration = calculateSessionDuration(session.startedAt);
+      const sessionDuration = calculateSessionDuration(
+        session.startedAt,
+        new Date()
+      );
 
       const answersDetails: QuizAnswerDetail[] = userAnswers.map(
         (userAnswer) => {
@@ -95,7 +98,12 @@ export const useQuizResults = (
 
   // Auto-submit when results are shown (only once)
   useEffect(() => {
-    if (showResults && !submitSuccess && !isSubmitting && !hasAttemptedSubmit.current) {
+    if (
+      showResults &&
+      !submitSuccess &&
+      !isSubmitting &&
+      !hasAttemptedSubmit.current
+    ) {
       submitResults();
     }
   }, [showResults, submitSuccess, isSubmitting, submitResults]);

@@ -30,6 +30,9 @@ export const calculateScore = (
 /**
  * Calculates session duration in seconds
  */
-export const calculateSessionDuration = (startedAt: Date): number => {
-  return Math.floor((Date.now() - startedAt.getTime()) / 1000);
+export const calculateSessionDuration = (
+  startedAt: Date,
+  finishedAt: Date
+): number => {
+  return Math.floor((finishedAt.getTime() - startedAt.getTime()) / 1000);
 };
